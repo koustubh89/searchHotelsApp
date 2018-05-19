@@ -55,9 +55,9 @@ export class HotelService {
     }
   };
   //send init call
-  getSearchInit = (): Observable<any> => {
+  getSearchInit = () => {
     console.log('search init');
-    return this.http.post<any>(this.AppConstants.searchInit,{}).pipe(
+    this.http.post<any>(this.AppConstants.searchInit,{}).pipe(
       tap(Id => {
         this.sessionId = Id; 
         this.searchStatusObj.sessionId = this.sessionId;
@@ -68,16 +68,16 @@ export class HotelService {
   }
 
   // send status call
-  getSearchStatus = (): Observable<any> => {
+  getSearchStatus = () => {
     console.log('search status call');
-    return this.http.post<any>(this.AppConstants.getSearchStatus, {sessionId: this.sessionId}).pipe(
+    this.http.post<any>(this.AppConstants.getSearchStatus, {sessionId: this.sessionId}).pipe(
       tap(result => this.getResults() ),
       catchError(this.handleError(`getSearchStatus`, []))
     );
   }
 
   // get all hotels
-  getResults = (): Observable<any> => {
+  getResults = () => {
     console.log('search hotels calls');
     return this.http.post<any>(this.AppConstants.getHotels, this.searchStatusObj).pipe(
       tap(hotels =>{ 

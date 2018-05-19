@@ -1,27 +1,27 @@
 <div class="container">
-  <h1>Search Form Page</h1>
+  <h1 [innerHtml]="getText().SearchFormHeader">Search Form Page</h1>
   <form (ngSubmit)="onSubmit()" #searchForm="ngForm">
-    <div class="form-group">
-      <label for="name">where</label>
+    <div class="form-group full-width">
+      <label for="name" [innerHtml]="getText().where">where</label>
       <input type="text" class="form-control" id="where"
              required
              [(ngModel)]="model.where" name="where">
     </div>
     
     <div class="form-group">
-      <label for="checkIn">Check In</label>
+      <label for="checkIn" [innerHtml]="getText().CheckIn ">Check In</label>
       <input type="text"  class="form-control" id="checkIn"
              [(ngModel)]="model.checkIn" name="checkIn">
     </div>
     
     <div class="form-group">
-      <label for="checkOut">Check Out</label> 
+      <label for="checkOut" [innerHtml]="getText().CheckOut">Check Out</label> 
       <input type="text"  class="form-control" id="checkOut"
              [(ngModel)]="model.checkOut" name="checkOut">
     </div>
 
     <div class="form-group">
-      <label for="numG">Number of Guests</label>
+      <label for="numG" [innerHtml]="getText().NumberGuest">Number of Guests</label>
       <select class="form-control"  id="numG"
               required
               [(ngModel)]="model.numG" name="numG">
@@ -29,6 +29,8 @@
       </select>
     </div>
 
-    <button type="submit" class="btn btn-success">Search for Hotels</button>
+    <div class="button-div">
+      <button type="submit" class="btn btn-success" [innerHtml]="getText().Search ">Search for Hotels</button>
+    </div>
   </form>
 </div>

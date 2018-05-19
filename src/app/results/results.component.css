@@ -1,0 +1,6 @@
+.container {
+    margin-top: 50px; 
+}
+.container h1, .container .result-tag-line, .container .no-hotel{
+    margin: 10px 10px;
+}

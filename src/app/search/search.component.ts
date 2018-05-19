@@ -17,9 +17,18 @@ export class SearchComponent implements OnInit {
 
   submitted = false;
 
+  getText() {
+    return {
+      SearchFormHeader: 'Search Form Header',
+      NumberGuest: 'Number of Guest',
+      where: 'Where are you going ?',
+      CheckIn: 'Check-in',
+      CheckOut: 'Check-out',
+      Search: 'Search for Hotels'
+    }
+  }
   onSubmit() { 
     this.submitted = true;
-    console.log('lookup from here');
     this.HotelService.getSearchInit();
   }
 
