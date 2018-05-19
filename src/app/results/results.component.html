@@ -32,9 +32,9 @@
           </div>
           <div class="total-money-info">
               <span [innerHtml]="getText().total"></span>
-              <span> {{hotel.rates.perBookingRates[0].totalFare}}</span>
+              <span> {{hotel.rates || hotel.rates.perBookingRates.length > 0 || hotel.rates.perBookingRates[0].totalFare}}</span>
           </div>
-          <button [innerHtml]="getText().showRooms" (click)></button>
+          <button [innerHtml]="getText().showRooms"></button>
         </div>
       </li>
     </ul>

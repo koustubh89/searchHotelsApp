@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Search } from '../search';
-import { } from '';
+import { HotelService } from '../hotel.service';
 
 @Component({
   selector: 'app-search',
@@ -9,7 +9,7 @@ import { } from '';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(private HotelService: HotelService) { }
   
   guests = [1, 2, 3, 4];
 
@@ -20,6 +20,7 @@ export class SearchComponent implements OnInit {
   onSubmit() { 
     this.submitted = true;
     console.log('lookup from here');
+    this.HotelService.getSearchInit();
   }
 
   ngOnInit() {
