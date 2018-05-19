@@ -1,0 +1,46 @@
+<div class="container">
+  <h1 [innerHtml]="getText().resultsHead"></h1>
+
+  <div class="sample-form-value">
+
+  </div>
+
+  <div class="result-available" *ngIf="hotelResults.length">
+
+    <div class="result-tag-line">
+      {{hotelResults.length}}
+      <span [innerHtml]="getText().hotels"></span> {{hotelResults.where}}
+      <span [innerHtml]="getText().on"></span> {{hotelResults.checkIn}}
+      <span [innerHtml]="getText().for"></span> {{hotelResults.numG}}
+    </div>
+    
+    <ul class="list-of-hotels">
+      <li *ngFor="let hotel of hotelResults">
+        <div class="col">
+          <img src="{{hotel.url}}" alt="hotel.imageCaption">
+        </div>
+        <div class="col">
+          <div class="hotel-stars">{{hotel.rating}}</div>  
+          <div class="hotel-name">{{hotel.name}}</div> 
+          <div class="hotel-address">{{hotel.contact.address.line1}}</div>
+        </div>
+        <div class="col">
+          <span [innerHtml]="getText().from"></span>
+          <div class="rate">
+            <span [innerHtml]="getText().currency"></span><span class="hotel-rate">{{hotel.rate}}</span>
+            <span [innerHtml]="getText().night">{{hotel.rates.perBookingRates[0].baseFare}}</span>
+          </div>
+          <div class="total-money-info">
+              <span [innerHtml]="getText().total"></span>
+              <span> {{hotel.rates.perBookingRates[0].totalFare}}</span>
+          </div>
+          <button [innerHtml]="getText().showRooms" (click)></button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="no-hotel" *ngIf="!hotelResults.length">
+    <span [innerHtml]="getText().noHotels"></span>
+  </div>
+
+</div>
