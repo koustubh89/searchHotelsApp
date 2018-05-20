@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HotelService } from '../hotel.service';
 
 @Component({
   selector: 'app-results',
@@ -7,14 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private HotelService: HotelService) { }
   hotelResults = [];
 
   getText() {
     return {
       resultsHead: 'Search Results Page',
       hotels:'hotels',
-      in:'in',
+      in:'in',  
       for:'for',
       noHotels: 'no hotels found',
       currency: '$',
@@ -24,7 +25,11 @@ export class ResultsComponent implements OnInit {
       showRooms: 'showRooms'
     }
   }
+
   ngOnInit() {
+    this.HotelService.getResults().subscribe(data => {
+      this.hotelResults = data;
+    })
   }
 
 }

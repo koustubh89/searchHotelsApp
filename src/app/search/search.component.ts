@@ -29,10 +29,19 @@ export class SearchComponent implements OnInit {
   }
   onSubmit() { 
     this.submitted = true;
-    this.HotelService.getSearchInit();
+
+    this.model = new Search(1, '', '', '', 2);
+    console.log('firing up the search init');
+    this.HotelService.setQueryObject(this.model);
+    this.HotelService.getResults();
   }
 
   ngOnInit() {
+    // ajax calls to get the json text for internationalizations
+    //this.getText();
+
+    //initilize search 
+    this.HotelService.getSearchInit();
   }
 
 }

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 
-import { HttpModule } from '@angular/http';
+import { HttpModule, RequestOptions } from '@angular/http';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { AppConstants } from './appConstants';
+import { Search } from './search';
 
 @Injectable()
 
@@ -14,10 +15,16 @@ export class HotelService {
   constructor(
     private http: HttpClient,
     private AppConstants: AppConstants
-  ) { }
+  ) {
+  }
 
   hotels: undefined;
   sessionId: undefined;
+  query: undefined;
+
+  setQueryObject(queryObject) {
+    this.query = queryObject;
+  }
   searchStatusObj = {
     "sessionId": this.sessionId || undefined,
     "paging": {
@@ -54,33 +61,49 @@ export class HotelService {
         "allowedCountry": "FR"
     }
   };
+
   //send init call
   getSearchInit = () => {
-    console.log('search init');
-    this.http.post<any>(this.AppConstants.searchInit,{}).pipe(
-      tap(Id => {
-        this.sessionId = Id; 
-        this.searchStatusObj.sessionId = this.sessionId;
-        this.getSearchStatus();
-      }),
-      catchError(this.handleError(`searchInit`, []))
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('oski-tenantId', 'Demo');
+
+    this.http.post<any>(this.AppConstants.searchInit,{}, {headers: headers}).subscribe(
+      (Id => {
+          this.sessionId = Id;
+          this.searchStatusObj.sessionId = this.sessionId;
+          this.getSearchStatus();
+        }
+      ),
+      (error) => {
+        catchError(this.handleError(`searchInit`, []))
+      }
     );
   }
 
   // send status call
-  getSearchStatus = () => {
-    console.log('search status call');
-    this.http.post<any>(this.AppConstants.getSearchStatus, {sessionId: this.sessionId}).pipe(
-      tap(result => this.getResults() ),
+  getSearchStatus = () => {    
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('oski-tenantId', 'Demo');
+    
+    this.http.post<any>(this.AppConstants.getSearchStatus, {sessionId: this.sessionId}, {headers: headers}).pipe(
+      tap(result => {
+          // this.getResults()
+        }
+      ),
       catchError(this.handleError(`getSearchStatus`, []))
     );
   }
 
   // get all hotels
-  getResults = () => {
-    console.log('search hotels calls');
-    return this.http.post<any>(this.AppConstants.getHotels, this.searchStatusObj).pipe(
-      tap(hotels =>{ 
+  getResults = (): Observable<any> => {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('oski-tenantId', 'Demo');
+
+    return this.http.post<any>(this.AppConstants.getHotels, this.searchStatusObj, {headers: headers}).pipe(
+      tap(hotels =>{
         console.log(`fetched hotels`, hotels.hotels)
         this.hotels = hotels.hotels; 
       }),
