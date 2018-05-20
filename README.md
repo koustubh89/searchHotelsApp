@@ -1,27 +1,26 @@
-# MyApp
+This project can be downloadedfrom the github link. Please run the following steps to run the code:
 
+1. Check Node version. If it isnt there install node. Version > 5.6.0
+Also check the availability of angular-cli.
+2. After node is installed, open the command promt and navigate to the folder where the code is present.
+3. At the level where package,json is present, run
+'npm install'
+4. After successfull completion of the command in step 3, run the follwoing command to execute the code
+'npm serve'
+Alternatively, 
+'npm serve --open' will open the application directly in browser.
+
+# SearchHotelsApp
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Vaidations
+1. The search form has been provided with basic validations for text boxes.
+2. There is a separate model class created to cast the data from the search form.
 
-## Code scaffolding
+Suggestions for Enhancements
+1. The app doesn't have a routing feature for now. It could be supplied with routes and could be split out in different pages to provide better accessibility.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. There aren't any specific jsons for the internationalizations but the provisioning for the same has been done in the app. It would be good to seperate out the text into sepearte jsons.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+3. Styling could be improved in the pages
