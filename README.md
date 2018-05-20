@@ -1,3 +1,4 @@
+#Steps to run the code
 This project can be downloadedfrom the github link. Please run the following steps to run the code:
 
 1. Check Node version. If it isnt there install node. Version > 5.6.0
@@ -6,7 +7,8 @@ Also check the availability of angular-cli.
 3. At the level where package,json is present, run
 'npm install'
 4. After successfull completion of the command in step 3, run the follwoing command to execute the code
-'npm serve'
+'npm serve' and open the url
+    http://localhost:4200/
 Alternatively, 
 'npm serve --open' will open the application directly in browser.
 
