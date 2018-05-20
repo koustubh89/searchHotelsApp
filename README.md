@@ -1,7 +1,9 @@
-#Steps to run the code
+# SearchHotelsApp
+
+Steps to run the code
 This project can be downloadedfrom the github link. Please run the following steps to run the code:
 
-1. Check Node version. If it isnt there install node. Version > 5.6.0
+1. Check the availability of Node. If Node is not present, install node version > 5.6.0 .
 Also check the availability of angular-cli.
 2. After node is installed, open the command promt and navigate to the folder where the code is present.
 3. At the level where package,json is present, run
@@ -12,7 +14,6 @@ Also check the availability of angular-cli.
 Alternatively, 
 'npm serve --open' will open the application directly in browser.
 
-# SearchHotelsApp
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
 
 
