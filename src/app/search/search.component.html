@@ -2,35 +2,47 @@
   <h1 [innerHtml]="getText().SearchFormHeader">Search Form Page</h1>
   <form (ngSubmit)="onSubmit()" #searchForm="ngForm">
     <div class="form-group full-width">
-      <label for="name" [innerHtml]="getText().where">where</label>
-      <input type="text" class="form-control" id="where"
-             required
-             [(ngModel)]="model.where" name="where">
-    </div>
-    
-    <div class="form-group">
-      <label for="checkIn" [innerHtml]="getText().CheckIn ">Check In</label>
-      <input type="text"  class="form-control" id="checkIn"
-             [(ngModel)]="model.checkIn" name="checkIn">
-    </div>
-    
-    <div class="form-group">
-      <label for="checkOut" [innerHtml]="getText().CheckOut">Check Out</label> 
-      <input type="text"  class="form-control" id="checkOut"
-             [(ngModel)]="model.checkOut" name="checkOut">
+      <div class="field">
+        <label for="name" [innerHtml]="getText().where">where</label>
+        <input type="text" class="form-control" id="where" required [(ngModel)]="model.where" name="where" #where="ngModel">
+      </div>
+      <div [hidden]="where.valid || where.pristine" class="alert alert-danger">
+        Destinaion is required
+      </div>
     </div>
 
     <div class="form-group">
-      <label for="numG" [innerHtml]="getText().NumberGuest">Number of Guests</label>
-      <select class="form-control"  id="numG"
-              required
-              [(ngModel)]="model.numG" name="numG">
-        <option *ngFor="let num of guests" [value]="num">{{num}}</option>
-      </select>
+      <div class="field">
+
+        <label for="checkIn" [innerHtml]="getText().CheckIn ">Check In</label>
+        <input type="text" class="form-control" id="checkIn" required [(ngModel)]="model.checkIn" name="checkIn" #checkIn="ngModel">
+      </div>
+      <div [hidden]="checkIn.valid || checkIn.pristine" class="alert alert-danger">
+        CheckIn Time is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <label for="checkOut" [innerHtml]="getText().CheckOut">Check Out</label>
+        <input type="text" class="form-control" id="checkOut" required [(ngModel)]="model.checkOut" name="checkOut" #checkOut="ngModel">
+      </div>
+      <div [hidden]="checkOut.valid || checkOut.pristine" class="alert alert-danger">
+        CheckOut Time is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <label for="numG" [innerHtml]="getText().NumberGuest">Number of Guests</label>
+        <select class="form-control" id="numG" required [(ngModel)]="model.numG" name="numG" #numG="ngModel">
+          <option *ngFor="let num of guests" [value]="num">{{num}}</option>
+        </select>
+      </div>
     </div>
 
     <div class="button-div">
-      <button type="submit" class="btn btn-success" [innerHtml]="getText().Search ">Search for Hotels</button>
+      <button type="submit" class="btn btn-success" [innerHtml]="getText().Search" [disabled]="!searchForm.form.valid">Search for Hotels</button>
     </div>
   </form>
 </div>

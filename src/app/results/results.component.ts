@@ -10,6 +10,7 @@ export class ResultsComponent implements OnInit {
 
   constructor(private HotelService: HotelService) { }
   hotelResults = [];
+  query: undefined;
 
   getText() {
     return {
@@ -17,7 +18,7 @@ export class ResultsComponent implements OnInit {
       hotels:'hotels',
       in:'in',  
       for:'for',
-      noHotels: 'no hotels found',
+      noHotels: 'No hotels found',
       currency: '$',
       from: 'from',
       night: '/night',
@@ -30,6 +31,8 @@ export class ResultsComponent implements OnInit {
     this.HotelService.getResults().subscribe(data => {
       this.hotelResults = data;
     })
-  }
 
+    // needs to come from an observable in the hotel service
+    this.query = this.HotelService.query;
+  }
 }

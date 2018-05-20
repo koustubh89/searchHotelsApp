@@ -8,9 +8,9 @@
   <div class="result-available" *ngIf="hotelResults.length">
     <div class="result-tag-line">
       {{hotelResults.length}}
-      <span [innerHtml]="getText().hotels"></span> {{hotelResults.where}}
-      <span [innerHtml]="getText().on"></span> {{hotelResults.checkIn}}
-      <span [innerHtml]="getText().for"></span> {{hotelResults.numG}}
+      <span [innerHtml]="getText().hotels"></span> {{query.where}}
+      <span [innerHtml]="getText().on"></span> {{query.checkIn}}
+      <span [innerHtml]="getText().for"></span> {{query.numG}}
     </div>
     
     <ul class="list-of-hotels">

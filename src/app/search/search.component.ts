@@ -30,8 +30,8 @@ export class SearchComponent implements OnInit {
   onSubmit() { 
     this.submitted = true;
 
-    this.model = new Search(1, '', '', '', 2);
-    console.log('firing up the search init');
+    //this.model = new Search(1, '', '', '', 2);
+    console.log('firing up the search init', this.model);
     this.HotelService.setQueryObject(this.model);
     this.HotelService.getResults();
   }
@@ -43,5 +43,4 @@ export class SearchComponent implements OnInit {
     //initilize search 
     this.HotelService.getSearchInit();
   }
-
 }
